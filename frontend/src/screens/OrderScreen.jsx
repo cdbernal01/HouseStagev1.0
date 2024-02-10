@@ -91,6 +91,7 @@ const OrderScreen = () => {
   const deliverHandler = async () => {
     await deliverOrder(orderId);
     refetch();
+    toast.success('Pedido Actualizado');
   };
 
   return isLoading ? (

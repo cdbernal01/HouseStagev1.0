@@ -51,3 +51,15 @@ table th {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.page-container {
+  position: relative;
+  /* Ajusta el padding inferior para dar espacio al widget */
+  padding-bottom: 80px;
+}
+
+.whatsapp-widget {
+  position: fixed;
+  bottom: 20px; /* Ajusta el espacio desde el borde inferior */
+  left: 20px; /* Ajusta el espacio desde el borde izquierdo */
+}
