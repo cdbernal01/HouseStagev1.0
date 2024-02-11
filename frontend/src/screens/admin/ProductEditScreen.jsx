@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import {
   useGetProductDetailsQuery,
   useUpdateProductMutation,
+  useUploadProductImageMutation,
 } from '../../slices/productsApiSlice';
 
 const ProductEditScreen = () => {
@@ -31,6 +32,9 @@ const ProductEditScreen = () => {
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
 
+    const [uploadProductImage, { isLoading: loadingUpload }] =
+    useUploadProductImageMutation();
+
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -46,7 +50,7 @@ const ProductEditScreen = () => {
         description,
         countInStock,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
-      toast.success('Product updated');
+      toast.success('Producto actualizado');
       refetch();
       navigate('/admin/productlist');
     } catch (err) {
@@ -65,6 +69,18 @@ const ProductEditScreen = () => {
       setDescription(product.description);
     }
   }, [product]);
+
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
 
   return (
@@ -85,7 +101,7 @@ const ProductEditScreen = () => {
               <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="name"
-                placeholder="Enter name"
+                placeholder="Introduzca nombre"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
@@ -95,28 +111,33 @@ const ProductEditScreen = () => {
               <Form.Label>Precio</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="Enter price"
+                placeholder="Introduzca precio"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="image" className="my-2">
-              <Form.Label>Imagen</Form.Label>
+            <Form.Group controlId='image'>
+              <Form.Label>Image</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Enter image url"
+                type='text'
+                placeholder='Introduzca imagen'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-              <Form.Control label="Choose File" type="file"></Form.Control>
+              <Form.Control
+                label='Choose File'
+                onChange={uploadFileHandler}
+                type='file'
+              ></Form.Control>
+              {loadingUpload && <Loader />}
             </Form.Group>
 
             <Form.Group controlId="brand" className="my-2">
               <Form.Label>Marca</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter brand"
+                placeholder="Introduzca marca"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
@@ -126,7 +147,7 @@ const ProductEditScreen = () => {
               <Form.Label>Cantidad en inventario</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="Enter countInStock"
+                placeholder="Introduzca cantidad"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
@@ -136,7 +157,7 @@ const ProductEditScreen = () => {
               <Form.Label>Categoría</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter category"
+                placeholder="Introduzca categoria"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
@@ -148,7 +169,7 @@ const ProductEditScreen = () => {
                 as="textarea"
                 rows={7}
                 type="text"
-                placeholder="Enter description"
+                placeholder="Introduzca descripción"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
