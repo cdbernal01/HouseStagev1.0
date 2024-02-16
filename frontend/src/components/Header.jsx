@@ -1,6 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { Nav, Navbar, Container, Badge, NavDropdown } from 'react-bootstrap';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import {
+  Nav,
+  Navbar,
+  Container,
+  Badge,
+  NavDropdown,
+  Row,
+  Col,
+} from 'react-bootstrap';
+import {
+  FaShoppingCart,
+  FaUserCircle,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+} from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
@@ -25,11 +39,25 @@ const Header = () => {
       console.error(err);
     }
   };
+  
 
   return (
     <header>
       <Navbar bg="black" variant="dark" expant="lg" collapseOnSelect>
         <Container>
+        <Row>
+          <span style={{ fontSize: '20px', marginRight: '-15px' }}>
+            <FaInstagram />
+          </span>
+          <span style={{ fontSize: '20px', marginRight: '-15px' }}>
+            <FaTwitter />
+          </span>
+          <span>
+            <FaFacebook
+              style={{ fontSize: '20px', marginRight: '-15px' }}
+            ></FaFacebook>
+          </span>
+        </Row>
           <LinkContainer to="/">
             <Navbar.Brand>
               <img src={logo} alt="HouseStage"></img>
@@ -62,8 +90,7 @@ const Header = () => {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <FaUser />
-                    Iniciar Sesión
+                    <FaUserCircle /> Iniciar Sesión
                   </Nav.Link>
                 </LinkContainer>
               )}

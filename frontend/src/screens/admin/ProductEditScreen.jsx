@@ -5,6 +5,7 @@ import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import FormContainer from '../../components/FormContainer';
 import { toast } from 'react-toastify';
+import { FaEdit } from "react-icons/fa";
 import {
   useGetProductDetailsQuery,
   useUpdateProductMutation,
@@ -89,7 +90,7 @@ const ProductEditScreen = () => {
         Volver atras
       </Link>
       <FormContainer>
-        <h1>Editar Producto</h1>
+        <h1>Editar Producto <FaEdit /></h1>
         {loadingUpdate && <Loader />}
         {isLoading ? (
           <Loader />

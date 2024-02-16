@@ -51,7 +51,7 @@ const CartScreen = () => {
                   <Col md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
-                  <Col md={3}>${item.price}</Col>
+                  <Col md={3}>${item.price.toLocaleString()}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"

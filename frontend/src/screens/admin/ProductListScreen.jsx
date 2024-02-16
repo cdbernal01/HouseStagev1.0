@@ -5,7 +5,8 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
-import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaTrash  } from 'react-icons/fa';
+import { MdOutlineInventory } from "react-icons/md";
 import { useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
@@ -52,7 +53,7 @@ const ProductListScreen = () => {
     <>
       <Row className="align-items-center">
         <Col>
-          <h1>Gestión de Productos</h1>
+          <h1>Productos <MdOutlineInventory /></h1>
         </Col>
         <Col className="text-end">
           <Button className="my-3" onClick={createProductHandler}>
@@ -71,19 +72,44 @@ const ProductListScreen = () => {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
-                <th style={{ backgroundColor: 'lightgreen', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   ID PRODUCTO
                 </th>
-                <th style={{ backgroundColor: 'lightgreen', color: 'black' }}>
+                <th style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   NOMBRE
                 </th>
-                <th style={{ backgroundColor: 'lightgreen', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   PRECIO
                 </th>
-                <th style={{ backgroundColor: 'lightgreen', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   CATEGORIA
                 </th>
-                <th style={{ backgroundColor: 'lightgreen', color: 'black' }}>
+                <th style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   MARCA
                 </th>
                 <th></th>
@@ -92,19 +118,19 @@ const ProductListScreen = () => {
             <tbody>
               {products.map((product) => (
                 <tr key={product._id}>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {product._id}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {product.name}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     ${product.price.toLocaleString()}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {product.category}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {product.brand}
                   </td>
                   <td>

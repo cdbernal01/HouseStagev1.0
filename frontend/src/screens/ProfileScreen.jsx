@@ -79,14 +79,14 @@ const ProfileScreen = () => {
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Intrduzca la nueva contraseña"
+              placeholder="Introduzca la nueva contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group className="my-2" controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Confirmar contraseña</Form.Label>
             <Form.Control
               type="password"
               placeholder="Confirme la nueva contraseña"
@@ -113,19 +113,44 @@ const ProfileScreen = () => {
           <Table striped hover responsive className="table-sm">
             <thead>
               <tr>
-                <th style={{ backgroundColor: 'lightgreen', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   ID DE PEDIDO
                 </th>
-                <th style={{ backgroundColor: 'lightcyan', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   FECHA
                 </th>
-                <th style={{ backgroundColor: 'lightcyan', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   TOTAL
                 </th>
-                <th style={{ backgroundColor: 'lightcyan', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   PAGO
                 </th>
-                <th style={{ backgroundColor: 'lightcyan', color: 'black' }}>
+                <th  style={{
+                  backgroundColor: '#192134',
+                  color: 'white',
+                  border: '1px solid white',
+                }}
+              >
                   ENTREGADO
                 </th>
                 <th></th>
@@ -134,23 +159,23 @@ const ProfileScreen = () => {
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {order._id}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {order.createdAt.substring(0, 10)}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     $ {order.totalPrice.toLocaleString()}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
                       <FaTimes style={{ color: 'red' }} />
                     )}
                   </td>
-                  <td style={{ backgroundColor: 'gray', color: 'white' }}>
+                  <td style={{ backgroundColor: '#F6FDFF', color: 'black' }}>
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)
                     ) : (
