@@ -3,7 +3,7 @@ Se agregaron las funciones de "Carro de Compras" en las cuales se pueden agregar
 
 22/02/24
 
-Se agrega el modulo de SWAGGER para documentaciuon de API's lo que permite visualziar cada uno de los Enpoints de consumo de Productos, usuarios, y ordenes de pedido, asi mismo se documenta codigo en swagger y directamente en codigo fuente
+Se agrega el modulo de SWAGGER para documentacion de API's lo que permite visualziar cada uno de los Enpoints de consumo de Productos, usuarios, y ordenes de pedido, asi mismo se documenta codigo en swagger y directamente en codigo fuente
 
 ![image](https://github.com/cdbernal01/HouseStagev1.0/assets/129089383/e5e26acb-b799-4c81-a067-4107a7fdc33b)
 
