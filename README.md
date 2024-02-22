@@ -9,6 +9,10 @@ Se agrega el modulo de SWAGGER para documentaciuon de API's lo que permite visua
 
 ![image](https://github.com/cdbernal01/HouseStagev1.0/assets/129089383/034fb31c-1a49-40d8-871d-985ed6b5129c)
 
+CODIGO COMENTADO 
+
+![image](https://github.com/cdbernal01/HouseStagev1.0/assets/129089383/9e2e0238-a573-4574-b25c-0cc52abd3021)
+
 
 
 RESPECTIVAS PRUEBAS CON POSTMAN BACKEND
