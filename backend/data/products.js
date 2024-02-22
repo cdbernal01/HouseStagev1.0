@@ -13,7 +13,7 @@ const products = [
   },
   {
     name: "Kit Atornillador de Impacto 1/4-pulg 18V Incluye 2 Baterías 2.0Ah I-L, Cargador y 4 Puntas Bauker",
-    image: "/images/323271.jpg",
+    image: ["/images/323271.jpg","/images/56545.jpg" ],
     description:
       "Presentamos el Atornillador Eléctrico Profesional de última generación, una herramienta potente y versátil diseñada para satisfacer las demandas más exigentes en el ámbito profesional. Este atornillador destaca por su Tipo de Velocidad Variable Reversible, proporcionando un control preciso en una amplia gama de aplicaciones",
     brand: "Bauker",
