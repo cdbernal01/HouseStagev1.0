@@ -1,5 +1,5 @@
-import asyncHandler from "../middleware/asyncHandler.js";
-import Product from "../models/productModel.js";
+import asyncHandler from '../middleware/asyncHandler.js';
+import Product from '../models/productModel.js';
 
 // @Description  Busca los productos
 // @router       GET /api/products
@@ -20,8 +20,19 @@ import Product from "../models/productModel.js";
  *         description: Error del servidor.
  */
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
-  res.json(products);
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
+
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: 'i' } }
+    : {};
+
+  const count = await Product.countDocuments({...keyword});
+
+  const products = await Product.find({...keyword})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 // @Description  Busca los productos
@@ -59,7 +70,7 @@ const getProductById = asyncHandler(async (req, res) => {
     return res.json(product);
   } else {
     res.status(404);
-    throw new Error("Resource not found");
+    throw new Error('Resource not found');
   }
 });
 
@@ -345,6 +356,36 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get top rated products
+// @route   GET /api/products/top
+// @access  Public
+/**
+ * @swagger
+ * /api/products/top:
+ *   get:
+ *     summary: Obtiene los productos mejor valorados
+ *     description: Obtiene los productos mejor valorados en la tienda.
+ *     tags:
+ *       - Productos
+ *     responses:
+ *       '200':
+ *         description: Productos obtenidos exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
+ *       '500':
+ *         description: Error del servidor
+ */
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+
+  res.json(products);
+});
+
+
 export {
   getProducts,
   getProductById,
@@ -352,4 +393,5 @@ export {
   updateProduct,
   deleteProduct,
   createProductReview,
+  getTopProducts,
 };

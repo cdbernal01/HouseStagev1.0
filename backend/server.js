@@ -21,9 +21,9 @@ const options = {
 
     openapi: '3.0.0',
     info: {
-      title: 'Documentación de la API',
+      title: `Documentación API's HOUSESTAGE `,
       version: '1.0.0',
-      description: 'Documentación de la API utilizando Swagger',
+      description: 'Endpoints de consumo con sus diferentes métodos para productos, usuarios y ordenes de compra, información de tallada de función y posibles códigos de respuesta asi como variables y tipos de datos',
     },
     servers: [
       {

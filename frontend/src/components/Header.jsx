@@ -6,7 +6,6 @@ import {
   Badge,
   NavDropdown,
   Row,
-  Col,
 } from 'react-bootstrap';
 import {
   FaShoppingCart,
@@ -18,6 +17,7 @@ import {
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
+import SearchBox from './SearchBox';
 import { logout } from '../slices/authSlice';
 import logo from '../assets/logo.png';
 
@@ -39,25 +39,24 @@ const Header = () => {
       console.error(err);
     }
   };
-  
 
   return (
     <header>
       <Navbar bg="black" variant="dark" expant="lg" collapseOnSelect>
         <Container>
-        <Row>
-          <span style={{ fontSize: '20px', marginRight: '-15px' }}>
-            <FaInstagram />
-          </span>
-          <span style={{ fontSize: '20px', marginRight: '-15px' }}>
-            <FaTwitter />
-          </span>
-          <span>
-            <FaFacebook
-              style={{ fontSize: '20px', marginRight: '-15px' }}
-            ></FaFacebook>
-          </span>
-        </Row>
+          <Row>
+            <span style={{ fontSize: '20px', marginRight: '-15px' }}>
+              <FaInstagram />
+            </span>
+            <span style={{ fontSize: '20px', marginRight: '-15px' }}>
+              <FaTwitter />
+            </span>
+            <span>
+              <FaFacebook
+                style={{ fontSize: '20px', marginRight: '-15px' }}
+              ></FaFacebook>
+            </span>
+          </Row>
           <LinkContainer to="/">
             <Navbar.Brand>
               <img src={logo} alt="HouseStage"></img>
@@ -108,6 +107,7 @@ const Header = () => {
                 </NavDropdown>
               )}
             </Nav>
+            <SearchBox/>
           </Navbar.Collapse>
         </Container>
       </Navbar>
