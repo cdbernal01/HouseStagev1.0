@@ -1,6 +1,20 @@
 HouseStagev1
 Se agregaron las funciones de "Carro de Compras" en las cuales se pueden agregar items por cantidad de acuerdo al numero de elementos en stock, asi mismo se calcula el valor de los items, por otro lado se incluyen las funciones de "inicio de sesion" para usuarios, estos asi mismo pueden registrase, actualizar datos y consultar informacion, para la seguidad de este componente se realiza mediante paquete JWT y se deja configurada una cookie de forma local la cual expira en 1 dia, se realiza toda la configuracion de errores para Login, Register, Logout (eliminando cookie almacenada), update.
 
+22/02/24
+
+Se agrega el modulo de SWAGGER para documentacion de API's lo que permite visualziar cada uno de los Enpoints de consumo de Productos, usuarios, y ordenes de pedido, asi mismo se documenta codigo en swagger y directamente en codigo fuente
+
+![image](https://github.com/cdbernal01/HouseStagev1.0/assets/129089383/e5e26acb-b799-4c81-a067-4107a7fdc33b)
+
+![image](https://github.com/cdbernal01/HouseStagev1.0/assets/129089383/034fb31c-1a49-40d8-871d-985ed6b5129c)
+
+CODIGO COMENTADO 
+
+![image](https://github.com/cdbernal01/HouseStagev1.0/assets/129089383/9e2e0238-a573-4574-b25c-0cc52abd3021)
+
+
+
 RESPECTIVAS PRUEBAS CON POSTMAN BACKEND
 
 LOGIN image
