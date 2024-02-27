@@ -12,6 +12,7 @@ import {
   useUploadProductImageMutation,
 } from '../../slices/productsApiSlice';
 
+
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
@@ -70,6 +71,7 @@ const ProductEditScreen = () => {
       setDescription(product.description);
     }
   }, [product]);
+  
 
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
@@ -80,6 +82,7 @@ const ProductEditScreen = () => {
       setImage(res.image);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+
     }
   };
 

@@ -1,27 +1,24 @@
 import { LinkContainer } from 'react-router-bootstrap';
-import {
-  Table,
-  Button,
-  Row,
-  Col,
-} from 'react-bootstrap';
-import { FaEdit, FaPlus, FaTrash  } from 'react-icons/fa';
-import { MdOutlineInventory } from "react-icons/md";
+import { Table, Button, Row, Col } from 'react-bootstrap';
+import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
+import { MdOutlineInventory } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import {
   useGetProductsQuery,
   useCreateProductMutation,
-  useDeleteProductMutation
+  useDeleteProductMutation,
 } from '../../slices/productsApiSlice';
 import Paginate from '../../components/Paginate';
 import Container from 'react-bootstrap/Container';
 import { toast } from 'react-toastify';
 
 const ProductListScreen = () => {
-  const { pageNumber } = useParams
-  const { data, isLoading, error, refetch } = useGetProductsQuery({pageNumber});
+  const { pageNumber } = useParams();
+  const { data, isLoading, error, refetch } = useGetProductsQuery({
+    pageNumber,
+  });
 
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
@@ -56,7 +53,9 @@ const ProductListScreen = () => {
     <>
       <Row className="align-items-center">
         <Col>
-          <h1>Productos <MdOutlineInventory /></h1>
+          <h1>
+            Productos <MdOutlineInventory />
+          </h1>
         </Col>
         <Col className="text-end">
           <Button className="my-3" onClick={createProductHandler}>
@@ -75,44 +74,49 @@ const ProductListScreen = () => {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
-                <th  style={{
-                  backgroundColor: '#192134',
-                  color: 'white',
-                  border: '1px solid white',
-                }}
-              >
+                <th
+                  style={{
+                    backgroundColor: '#192134',
+                    color: 'white',
+                    border: '1px solid white',
+                  }}
+                >
                   ID PRODUCTO
                 </th>
-                <th style={{
-                  backgroundColor: '#192134',
-                  color: 'white',
-                  border: '1px solid white',
-                }}
-              >
+                <th
+                  style={{
+                    backgroundColor: '#192134',
+                    color: 'white',
+                    border: '1px solid white',
+                  }}
+                >
                   NOMBRE
                 </th>
-                <th  style={{
-                  backgroundColor: '#192134',
-                  color: 'white',
-                  border: '1px solid white',
-                }}
-              >
+                <th
+                  style={{
+                    backgroundColor: '#192134',
+                    color: 'white',
+                    border: '1px solid white',
+                  }}
+                >
                   PRECIO
                 </th>
-                <th  style={{
-                  backgroundColor: '#192134',
-                  color: 'white',
-                  border: '1px solid white',
-                }}
-              >
+                <th
+                  style={{
+                    backgroundColor: '#192134',
+                    color: 'white',
+                    border: '1px solid white',
+                  }}
+                >
                   CATEGORIA
                 </th>
-                <th style={{
-                  backgroundColor: '#192134',
-                  color: 'white',
-                  border: '1px solid white',
-                }}
-              >
+                <th
+                  style={{
+                    backgroundColor: '#192134',
+                    color: 'white',
+                    border: '1px solid white',
+                  }}
+                >
                   MARCA
                 </th>
                 <th></th>
@@ -137,14 +141,14 @@ const ProductListScreen = () => {
                     {product.brand}
                   </td>
                   <td>
-                  <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                      <Button variant='light' className='btn-sm mx-2'>
+                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                      <Button variant="light" className="btn-sm mx-2">
                         <FaEdit />
                       </Button>
                     </LinkContainer>
                     <Button
-                      variant='danger'
-                      className='btn-sm'
+                      variant="danger"
+                      className="btn-sm"
                       onClick={() => deleteHandler(product._id)}
                     >
                       <FaTrash style={{ color: 'white' }} />
@@ -155,7 +159,7 @@ const ProductListScreen = () => {
             </tbody>
           </Table>
           <Container className="d-flex justify-content-center">
-            <Paginate pages={data.pages} page={data.page} isAdmin={true}/>
+            <Paginate pages={data.pages} page={data.page} isAdmin={true} />
           </Container>
         </>
       )}

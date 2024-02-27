@@ -5,7 +5,6 @@ import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
-import Container from 'react-bootstrap/Container';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 import ProductCarousel from '../components/ProductCarousel';
 
@@ -41,13 +40,11 @@ const HomeScreen = () => {
               </Col>
             ))}
           </Row>
-          <Container className="d-flex justify-content-center">
-            <Paginate
-              pages={data.pages}
-              page={data.page}
-              keyword={keyword ? keyword : ''}
-            />
-          </Container>
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ''}
+          />
         </>
       )}
     </>
